@@ -127,14 +127,14 @@ public class Order extends Menu {
                 initOrder();
                 m.onBoard();
             } else {
+                total_price -= super.products[select - 1].getPrice() * super.products[select - 1].getSame_product_count();
+                total_price = (double) Math.round(total_price * 100) / 100;
                 for (i = select - 1; i < super.count; i++) {
                     if (super.products[i + 1] == null) {
                         break;
                     }
                     super.products[i] = super.products[i + 1];
                 }
-                total_price -= super.products[select - 1].getPrice() * super.products[select - 1].getSame_product_count();
-                total_price = (double) Math.round(total_price * 100) / 100;
                 System.out.println(super.products[i].getName() + "상품을 취소합니다.");
                 super.count--;
                 super.products[select - 1].setSame_product_count(1);
